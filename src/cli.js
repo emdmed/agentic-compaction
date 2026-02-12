@@ -2,6 +2,7 @@
 
 import { resolve, join, basename } from 'path';
 import { writeFileSync } from 'fs';
+import pc from 'picocolors';
 import { compactProject } from './index.js';
 import { formatTokenCount } from './formatter.js';
 
@@ -52,8 +53,9 @@ const compactionRate = stats.rawTokens > 0
   ? ((1 - stats.compactedTokens / stats.rawTokens) * 100).toFixed(1)
   : '0';
 
-console.log(`\nSaved to ${outputPath}\n`);
-console.log(`  Files:            ${stats.files}`);
-console.log(`  Project tokens:   ${formatTokenCount(stats.rawTokens)}`);
-console.log(`  Compacted tokens: ${formatTokenCount(stats.compactedTokens)}`);
-console.log(`  Compaction rate:  ${compactionRate}%`);
+console.log(`\n${pc.green('✔')} ${pc.bold('Compaction complete!')}\n`);
+console.log(`  ${pc.dim('Saved to')} ${pc.cyan(outputPath)}\n`);
+console.log(`  ${pc.dim('Files')}            ${pc.white(stats.files)}`);
+console.log(`  ${pc.dim('Project tokens')}   ${pc.yellow(formatTokenCount(stats.rawTokens))}`);
+console.log(`  ${pc.dim('Compacted tokens')} ${pc.green(formatTokenCount(stats.compactedTokens))}`);
+console.log(`  ${pc.dim('Compaction rate')}  ${pc.bold(pc.green(compactionRate + '%'))}`);
