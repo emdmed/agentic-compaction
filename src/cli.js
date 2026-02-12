@@ -19,12 +19,17 @@ let jsonOutput = false;
 
 for (let i = 0; i < args.length; i++) {
   const arg = args[i];
-  if (arg === '--json') {
+  if (arg === '--pick') {
+    const { run } = await import('./pick.js');
+    await run();
+    process.exit(0);
+  } else if (arg === '--json') {
     jsonOutput = true;
   } else if (arg === '--help' || arg === '-h') {
-    console.log(`Usage: codebase-compact [path] [options]
+    console.log(`Usage: agentic-compaction [path] [options]
 
 Options:
+  --pick         Interactively pick sections from a compacted file
   --json         Output as JSON instead of text
   --help, -h     Show this help message
 
