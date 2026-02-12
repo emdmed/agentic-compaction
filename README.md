@@ -74,11 +74,12 @@ hooks: useState(2), useEffect([user]):18, useAuth
 ```
 
 The skeleton captures:
-- **Imports** (local paths shown, externals counted)
+- **Imports** (deduplicated local paths shown, externals counted)
 - **Exports** (default marked with `*`)
-- **Components** (PascalCase functions, HOC-wrapped)
-- **Functions** (with line numbers)
-- **Hooks** (counts, useEffect deps, custom hooks)
+- **Components** (top-level PascalCase functions, HOC-wrapped)
+- **Functions** (top-level only, with line numbers)
+- **Hooks** (only from top-level components: counts, useEffect deps, custom hooks)
+- **Constants** (top-level only)
 - **Classes, interfaces, types** (TS)
 - **Python**: imports, classes (with bases/decorators), functions, constants
 
@@ -86,9 +87,9 @@ The skeleton captures:
 
 | Language | Parser | Extensions |
 |----------|--------|------------|
-| JavaScript | `@babel/parser` | `.js`, `.jsx`, `.mjs`, `.cjs` |
-| TypeScript | `@babel/parser` | `.ts`, `.tsx`, `.mts`, `.cts` |
-| Python | Regex-based (zero deps) | `.py` |
+| JavaScript | `@babel/parser` (top-level only) | `.js`, `.jsx`, `.mjs`, `.cjs` |
+| TypeScript | `@babel/parser` (top-level only) | `.ts`, `.tsx`, `.mts`, `.cts` |
+| Python | Regex-based (top-level only, zero deps) | `.py` |
 
 ## Skipped Directories
 
