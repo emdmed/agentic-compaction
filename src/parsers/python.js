@@ -17,7 +17,7 @@ export const extractSkeleton = (code, filePath = '') => {
     imports: [],
     functions: [],
     classes: [],
-    constants: 0,
+    constants: [],
   };
 
   // Collect decorators as we scan
@@ -126,9 +126,9 @@ export const extractSkeleton = (code, filePath = '') => {
     }
 
     // Top-level assignments (constants)
-    const assignMatch = line.match(/^[A-Za-z_]\w*\s*[=:]/) || line.match(/^[A-Za-z_]\w*\s*:/);
+    const assignMatch = line.match(/^([A-Za-z_]\w*)\s*[=:]/);
     if (assignMatch) {
-      skeleton.constants++;
+      skeleton.constants.push(assignMatch[1]);
       pendingDecorators = [];
       continue;
     }
@@ -172,9 +172,19 @@ export const formatSkeletonForPrompt = (skeleton) => {
   if (skeleton.functions.length > 0) {
     const funcList = skeleton.functions.map(f => {
       const deco = f.decorators.length > 0 ? `@${f.decorators[0]} ` : '';
-      return `${deco}${f.name}:${f.line}`;
+      const params = f.params ? `(${f.params})` : '()';
+      return `${deco}${f.name}${params}:${f.line}`;
     }).join(', ');
     lines.push(`fn: ${funcList}`);
+  }
+
+  if (skeleton.constants.length > 0) {
+    const names = skeleton.constants;
+    if (names.length > 5) {
+      lines.push(`const: ${names.slice(0, 5).join(', ')} +${names.length - 5} more`);
+    } else {
+      lines.push(`const: ${names.join(', ')}`);
+    }
   }
 
   return lines.join('\n');

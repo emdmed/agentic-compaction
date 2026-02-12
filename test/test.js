@@ -21,7 +21,7 @@ describe('babel parser', () => {
     assert.ok(skeleton.imports.length > 0);
     assert.ok(skeleton.components.length > 0);
     assert.ok(skeleton.functions.length > 0);
-    assert.strictEqual(skeleton.hooks.useState, 1);
+    assert.deepStrictEqual(skeleton.hooks.useState, ['data']);
     assert.strictEqual(skeleton.hooks.useEffect.length, 1);
   });
 });
@@ -35,7 +35,7 @@ describe('python parser', () => {
     assert.strictEqual(skeleton.imports.length, 4);
     assert.strictEqual(skeleton.functions.length, 3);
     assert.strictEqual(skeleton.classes.length, 2);
-    assert.ok(skeleton.constants >= 2);
+    assert.ok(skeleton.constants.length >= 2);
   });
 
   it('parses decorators', () => {
