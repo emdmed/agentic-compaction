@@ -1,0 +1,25 @@
+{
+  "name": "agentic-compaction",
+  "version": "0.0.1",
+  "description": "Walk a project directory and output a compact structural skeleton of the entire codebase",
+  "type": "module",
+  "main": "./src/index.js",
+  "bin": {
+    "codebase-compact": "./src/cli.js"
+  },
+  "scripts": {
+    "test": "node --test test/"
+  },
+  "keywords": [
+    "codebase",
+    "compact",
+    "skeleton",
+    "parser",
+    "ast"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@babel/parser": "^7.24.0",
+    "@babel/traverse": "^7.24.0"
+  }
+}
