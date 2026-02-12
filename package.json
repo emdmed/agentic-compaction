@@ -1,11 +1,11 @@
 {
   "name": "agentic-compaction",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Walk a project directory and output a compact structural skeleton of the entire codebase",
   "type": "module",
   "main": "./src/index.js",
   "bin": {
-    "codebase-compact": "./src/cli.js"
+    "agentic-compaction": "./src/cli.js"
   },
   "scripts": {
     "test": "node --test test/"
