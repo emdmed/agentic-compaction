@@ -1,11 +1,12 @@
 {
   "name": "agentic-compaction",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Walk a project directory and output a compact structural skeleton of the entire codebase",
   "type": "module",
   "main": "./src/index.js",
   "bin": {
-    "agentic-compaction": "./src/cli.js"
+    "agentic-compaction": "./src/cli.js",
+    "ac-pick": "./src/cli-pick.js"
   },
   "scripts": {
     "test": "node --test test/"
@@ -20,6 +21,7 @@
   "license": "MIT",
   "dependencies": {
     "@babel/parser": "^7.24.0",
-    "@babel/traverse": "^7.24.0"
+    "@babel/traverse": "^7.24.0",
+    "@inquirer/prompts": "^8.2.0"
   }
 }
