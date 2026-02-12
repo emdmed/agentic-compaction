@@ -1,25 +1,25 @@
-# codebase-compact
+# agentic-compaction
 
 Walks a project directory, parses JS/TS/Python files, and outputs a compact structural skeleton of the entire codebase. Designed for feeding project context into LLM prompts with minimal token usage.
 
 Typical compaction rate: **~95%** token reduction.
 
+## Quick Start
+
+```bash
+npx agentic-compaction /path/to/project
+```
+
 ## Install
 
 ```bash
-npm install -g codebase-compact
-```
-
-Or run directly from the repo:
-
-```bash
-node src/cli.js /path/to/project
+npm install -g agentic-compaction
 ```
 
 ## CLI Usage
 
 ```bash
-codebase-compact [path] [options]
+agentic-compaction [path] [options]
 ```
 
 **Options:**
@@ -36,7 +36,7 @@ Output is saved to the target directory as `compacted_<project>_<date>.md`.
 **Example:**
 
 ```bash
-$ codebase-compact ~/projects/my-app
+$ npx agentic-compaction ~/projects/my-app
 
 Saved to /home/user/projects/my-app/compacted_my-app_2026-02-12_15-30-00.md
 
@@ -49,7 +49,7 @@ Saved to /home/user/projects/my-app/compacted_my-app_2026-02-12_15-30-00.md
 ## Library Usage
 
 ```js
-import { compactProject, compactFile } from 'codebase-compact';
+import { compactProject, compactFile } from 'agentic-compaction';
 
 // Compact an entire directory
 const { output, stats } = compactProject('/path/to/project');
