@@ -1,6 +1,6 @@
 {
   "name": "agentic-compaction",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Walk a project directory and output a compact structural skeleton of the entire codebase",
   "type": "module",
   "main": "./src/index.js",
